@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:weightSum="1">
-
-    <org.androidtown.oculus.Exercise1
-        android:layout_width="fill_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_follow_me"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sol.oculus.FollowMe">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#cef76e"
-        android:layout_above="@+id/progressBar" />
+        android:orientation="vertical">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="5dp"
-        android:id="@+id/progressBar"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:indeterminate="false" />
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            class="com.example.sol.oculus.Exercise1"
+            android:id="@+id/view"
+            android:layout_weight="50"
+            android:onClick="pauseFMClicked"
+            android:background="#cef76e"/>
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/progressBar"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pauseFM"
+        android:background="#44000000"
+        android:visibility="gone"
+        android:onClick="startFMClicked">
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

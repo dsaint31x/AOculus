@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_explain_fd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sol.oculus.ExplainFD">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="이 운동을 통해 눈의 외안근을 단련할 수 있습니다.\n\n
+        1. 화면을 눈 가까이에 두세요\n
+        2. 멀어지는 두 아이콘을 눈으로만 쫓아가 주세요\n
+        3. 화면을 누르면 일시정지합니다.\n\n
+        시작하시려면 화면을 터치해주세요."
+        android:id="@+id/textView"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        android:paddingLeft="50dp"
+        android:onClick="explainFDClicked"
+        android:gravity="fill_horizontal|center_vertical" />
+
+</RelativeLayout>
