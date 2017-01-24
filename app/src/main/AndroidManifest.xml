@@ -27,7 +27,9 @@
         <activity
             android:name=".ExplainFD"
             android:screenOrientation="landscape" />
-        <activity android:name=".Brightnesss"></activity>
+        <activity
+            android:name=".Brightnesss"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

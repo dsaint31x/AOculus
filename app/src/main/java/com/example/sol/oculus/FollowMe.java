@@ -13,11 +13,14 @@ public class FollowMe extends AppCompatActivity {
     RelativeLayout relativeLayout;
     int time = 0;                           //시간
     static boolean flag = false;            //프로그레스바 플래그
+    static boolean runflag = true;          //쓰레드 종료 플래그
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_me);
+
+        runflag = true;
 
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseFM);
 
@@ -31,7 +34,7 @@ public class FollowMe extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (runflag) {
                     if(flag) {
                         time++;
                         Log.d("FollowMe", "운동중");
@@ -39,7 +42,7 @@ public class FollowMe extends AppCompatActivity {
                         if (time > 100) {
                             Log.d("FollowMe", "운동완료");
                             time = 0;
-                            flag = false;
+                            runflag = false;
                             finish();
                         }
 
@@ -59,7 +62,7 @@ public class FollowMe extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        flag = false;
+        runflag = false;
         super.onBackPressed();
     }
 

@@ -141,7 +141,7 @@ public class Exercise1 extends View implements Runnable{
 
     @Override
     public void run() {
-        while(true) {
+        while(FollowMe.runflag) {
             if (FollowMe.flag) {
                 postInvalidate();
             }

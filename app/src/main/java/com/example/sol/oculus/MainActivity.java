@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), FifteenDots.class);
         startActivity(intent);
     }
+
+    public void BNButtonClicked(View view) {
+        Intent intent = new Intent(getApplicationContext(), Brightnesss.class);
+        startActivity(intent);
+    }
 }

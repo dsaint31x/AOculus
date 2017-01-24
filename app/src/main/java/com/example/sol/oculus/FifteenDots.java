@@ -19,6 +19,7 @@ public class FifteenDots extends AppCompatActivity {
 
     int time = 0;                           //시간
     static boolean flag = false;            //프로그레스바 플래그
+    boolean runflag = true;          //쓰레드 종료 플래그
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class FifteenDots extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (runflag) {
                     if(flag) {
                         time++;
                         Log.d("FifteenDots", "운동중");
@@ -54,7 +55,7 @@ public class FifteenDots extends AppCompatActivity {
                         if (time > 100) {
                             Log.d("FifteenDots", "운동완료");
                             time = 0;
-                            flag = false;
+                            runflag = false;
                             finish();
                         }
 
@@ -74,7 +75,7 @@ public class FifteenDots extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        flag = false;
+        runflag = false;
         super.onBackPressed();
     }
 
