@@ -24,6 +24,7 @@ public class Brightnesss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
         setContentView(R.layout.activity_brightnesss);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);

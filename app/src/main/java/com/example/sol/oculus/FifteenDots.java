@@ -24,6 +24,7 @@ public class FifteenDots extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
         setContentView(R.layout.activity_fifteen_dots);
 
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseFD);

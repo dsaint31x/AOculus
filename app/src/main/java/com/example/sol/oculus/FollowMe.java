@@ -18,6 +18,7 @@ public class FollowMe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
         setContentView(R.layout.activity_follow_me);
 
         runflag = true;
