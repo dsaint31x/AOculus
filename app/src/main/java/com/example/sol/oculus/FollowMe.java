@@ -1,10 +1,11 @@
 package com.example.sol.oculus;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -18,8 +19,10 @@ public class FollowMe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);                              //전체화면 만들기
         setContentView(R.layout.activity_follow_me);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);               //화면 안꺼짐
 
         runflag = true;
 
