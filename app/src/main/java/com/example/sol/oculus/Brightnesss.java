@@ -5,12 +5,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 public class Brightnesss extends AppCompatActivity {
     ProgressBar progressBar;
     ProgressHandler handler;
+    RelativeLayout relativeLayout;
     boolean flag = true;
     boolean runflag = true;          //쓰레드 종료 플래그
     float brightnessNum;
@@ -28,6 +31,7 @@ public class Brightnesss extends AppCompatActivity {
         progressBar.setMax(100);
         params = getWindow().getAttributes();
         handler = new ProgressHandler();
+        relativeLayout = (RelativeLayout) findViewById(R.id.pauseBN);
 
 
         Thread t = new Thread(new Runnable() {
@@ -69,13 +73,15 @@ public class Brightnesss extends AppCompatActivity {
             @Override
             public void run() {
                 while (runflag){
-                    try {
-                        Thread.sleep(10);
+                    if(flag){
+                        try {
+                            Thread.sleep(10);
 
-                        Message msg = handler.obtainMessage();
-                        handler.sendMessage(msg);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                            Message msg = handler.obtainMessage();
+                            handler.sendMessage(msg);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -88,6 +94,16 @@ public class Brightnesss extends AppCompatActivity {
     public void onBackPressed() {
         runflag = false;
         super.onBackPressed();
+    }
+
+    public void pauseClicked(View view) {
+        flag = false;
+        relativeLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void startClicked(View view) {
+        relativeLayout.setVisibility(View.GONE);
+        flag = true;
     }
 
     public class ProgressHandler extends Handler{

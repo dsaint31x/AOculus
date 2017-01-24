@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_brightnesss"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sol.oculus.Brightnesss"
-    android:orientation="vertical"
-    android:background="#cef76e">
-    <TextView
-        android:text="TextView"
+    tools:context="com.example.sol.oculus.Brightnesss">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:id="@+id/textView2" />
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#cef76e">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="이 운동을 통해 눈의 홍채를 단련할 수 있습니다.\n\n
+        1. 화면을 눈 가까이에 두세요\n
+        2. 화면을 누르면 일시정지합니다.\n\n
+        시작하시려면 화면을 터치해주세요."
+            android:textColor="#000000"
+            android:paddingLeft="50dp"
+            android:onClick="pauseClicked"
+            android:gravity="fill_horizontal|center_vertical" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:id="@+id/progressBar3" />
+    </LinearLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:max="100"
-        android:id="@+id/progressBar3" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:background="#44000000"
+        android:visibility="gone"
+        android:id="@+id/pauseBN"
+        android:onClick="startClicked"></RelativeLayout>
+</FrameLayout>
