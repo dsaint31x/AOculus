@@ -1,13 +1,96 @@
 package com.example.sol.oculus;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 public class FifteenDots extends AppCompatActivity {
+    ProgressBar progressBar;
+    RelativeLayout relativeLayout;
+    ImageView mImgView_left;
+    ImageView mImgView_right;
+    MyTranslateAnimation animTransLeft;
+    MyTranslateAnimation animTransRight;
+
+    int time = 0;                           //시간
+    static boolean flag = false;            //프로그레스바 플래그
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fifteen_dots);
+
+        relativeLayout = (RelativeLayout) findViewById(R.id.pauseFD);
+
+        Intent intent = new Intent(this, ExplainFD.class);
+        startActivity(intent);
+
+        mImgView_left = (ImageView) findViewById(R.id.left_icon);
+        mImgView_right = (ImageView) findViewById(R.id.right_icon); //이미지 정의
+
+        animTransRight = (MyTranslateAnimation) MyAnimationUtils.loadAnimation(this,R.anim.translate_right);
+        animTransLeft = (MyTranslateAnimation) MyAnimationUtils.loadAnimation(this,R.anim.translate);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+        progressBar.setIndeterminate(false);
+        progressBar.setMax(100);
+
+        mImgView_left.startAnimation(animTransLeft);
+        mImgView_right.startAnimation(animTransRight);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    if(flag) {
+                        time++;
+                        Log.d("FifteenDots", "운동중");
+
+                        if (time > 100) {
+                            Log.d("FifteenDots", "운동완료");
+                            time = 0;
+                            flag = false;
+                            finish();
+                        }
+
+                        progressBar.setProgress(time);
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        t.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        flag = false;
+        super.onBackPressed();
+    }
+
+    public void startFDClicked(View view) {
+        animTransRight.resume();
+        animTransLeft.resume();
+
+        relativeLayout.setVisibility(View.GONE);
+        flag = true;
+    }
+
+    public void pauseFDClicked(View view) {
+        animTransLeft.pause();
+        animTransRight.pause();
+
+        flag = false;
+        relativeLayout.setVisibility(View.VISIBLE);
     }
 }

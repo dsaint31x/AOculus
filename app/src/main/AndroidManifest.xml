@@ -21,10 +21,13 @@
         <activity
             android:name=".ExplainFM"
             android:screenOrientation="landscape" />
-        <activity android:name=".FifteenDots"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ExplainFD"
-            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".FifteenDots"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ExplainFD"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Brightnesss"></activity>
     </application>
 
 </manifest>

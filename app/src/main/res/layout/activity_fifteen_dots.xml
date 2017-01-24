@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_fifteen_dots"
     android:layout_width="match_parent"
@@ -7,27 +7,52 @@
     tools:context="com.example.sol.oculus.FifteenDots"
     android:background="#cef76e">
 
-    <ImageView
-        android:id="@+id/left_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/icon_img"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:onClick="pauseFDClicked">
+            <ImageView
+                android:id="@+id/left_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/icon_img"
 
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/right_icon"
-        android:layout_toStartOf="@+id/right_icon"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp" />
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/right_icon"
+                android:layout_toStartOf="@+id/right_icon"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp" />
 
-    <ImageView
-        android:id="@+id/right_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/icon_img"
-        android:layout_marginRight="216dp"
-        android:layout_marginEnd="216dp"
-        android:layout_alignTop="@+id/left_icon"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/right_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/icon_img"
+                android:layout_marginRight="216dp"
+                android:layout_marginEnd="216dp"
+                android:layout_alignTop="@+id/left_icon"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/progressBar2"
+            android:max="100" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pauseFD"
+        android:background="#44000000"
+        android:visibility="gone"
+        android:onClick="startFDClicked">
+    </RelativeLayout>
+</FrameLayout>

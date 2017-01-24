@@ -12,7 +12,8 @@ public class ExplainFD extends AppCompatActivity {
         setContentView(R.layout.activity_explain_fd);
     }
 
-    public void explainFClicked(View view) {
+    public void explainFDClicked(View view) {
+        FifteenDots.flag = true;
         finish();
     }
 }
