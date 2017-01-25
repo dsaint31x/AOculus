@@ -29,7 +29,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Brightnesss"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".ExerciseData"></activity>
     </application>
 
 </manifest>
