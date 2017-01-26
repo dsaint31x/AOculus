@@ -1,5 +1,6 @@
 package com.example.sol.oculus;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
@@ -10,8 +11,9 @@ import java.util.GregorianCalendar;
 
 public class MonthData extends AppCompatActivity {
     TextView selectDayView;
+    TextView selecData;
+    TextView todayData;
     CalendarView calendarView;
-    Calendar calendar = new GregorianCalendar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +22,36 @@ public class MonthData extends AppCompatActivity {
 
         //handler = new TimeHandler();
         selectDayView = (TextView)findViewById(R.id.selectDay);
+        selecData = (TextView) findViewById(R.id.selectData);
+        todayData = (TextView) findViewById(R.id.todayData);
+
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+
+        String todayFM = "FollowMe : "+LoadData("FM", today);
+        String todayFD = "FifteenDots : "+LoadData("FD", today);
+        String todayBN = "Brightness : "+LoadData("BN", today);
+
+        todayData.setText(todayFM +"\n"+ todayFD +"\n"+ todayBN);
+
         calendarView = (CalendarView) findViewById(R.id.calendarView);
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 selectDayView.setText("선택한 날짜 : "+ year +" / "+(month+1)+" / "+dayOfMonth);
+                String FM = "FollowMe : "+LoadData("FM", year+""+(month)+1+""+dayOfMonth);
+                String FD = "FifteenDots : "+LoadData("FD", year+""+(month)+1+""+dayOfMonth);
+                String BN = "Brightness : "+LoadData("BN", year+""+(month)+1+""+dayOfMonth);
 
+                selecData.setText(FM +"\n"+ FD +"\n"+ BN);
             }
         });
+    }
 
+
+    public int LoadData(String Exercise, String day){
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        return exerciseData.getInt(Exercise + day, 0);
     }
 }

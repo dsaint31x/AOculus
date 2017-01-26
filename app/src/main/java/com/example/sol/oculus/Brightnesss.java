@@ -1,5 +1,6 @@
 package com.example.sol.oculus;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +11,9 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class Brightnesss extends AppCompatActivity {
     ProgressBar progressBar;
     ProgressHandler handler;
@@ -17,6 +21,7 @@ public class Brightnesss extends AppCompatActivity {
     boolean flag = true;
     boolean runflag = true;          //쓰레드 종료 플래그
     float brightnessNum;
+    int num = -1;                     //운동횟수
     int time = 0;
     int timeNum = 0;
     WindowManager.LayoutParams params;
@@ -28,6 +33,8 @@ public class Brightnesss extends AppCompatActivity {
         setContentView(R.layout.activity_brightnesss);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);               //화면 안꺼짐
+
+        LoadData("BN");
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         progressBar.setIndeterminate(false);
@@ -46,10 +53,12 @@ public class Brightnesss extends AppCompatActivity {
 
                         Log.d("Brightness", "운동중  "+time + "  " + brightnessNum);
 
-                        if (time > 100) {
+                        if (time > 60) {
                             Log.d("Brightness", "운동완료");
                             params.screenBrightness = 0.8f;
                             time = 0;
+                            num++;
+                            SaveData("BN", num);
                             runflag = false;
                             finish();
                         }
@@ -113,20 +122,20 @@ public class Brightnesss extends AppCompatActivity {
         public void handleMessage(Message msg){
             timeNum++;
 
-            if(timeNum < 1500){
+            if(timeNum < 1000){
                 params.screenBrightness = 0.5f;
-            } else if(timeNum < 2000){
+            } else if(timeNum < 1500){
                 params.screenBrightness = 0.1f;
-            } else if(timeNum < 4000){
+            } else if(timeNum < 2650){
+                brightnessNum += 0.0003;
+                params.screenBrightness = brightnessNum;
+            } else if(timeNum < 3800){
+                brightnessNum -= 0.0003;
+                params.screenBrightness = brightnessNum;
+            } else if(timeNum < 4950){
                 brightnessNum += 0.0003;
                 params.screenBrightness = brightnessNum;
             } else if(timeNum < 6000){
-                brightnessNum -= 0.0003;
-                params.screenBrightness = brightnessNum;
-            } else if(timeNum < 8000){
-                brightnessNum += 0.0003;
-                params.screenBrightness = brightnessNum;
-            } else if(timeNum < 10000){
                 brightnessNum -= 0.0003;
                 params.screenBrightness = brightnessNum;
             }
@@ -134,5 +143,21 @@ public class Brightnesss extends AppCompatActivity {
             getWindow().setAttributes(params);
             progressBar.setProgress(time);
         }
+    }
+
+    public void SaveData(String Exercise, int num) {
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = exerciseData.edit();
+        editor.putInt(Exercise + today, num);
+        editor.commit();
+    }
+
+    public void LoadData(String Exercise){
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        num = exerciseData.getInt(Exercise + today, 0);
     }
 }

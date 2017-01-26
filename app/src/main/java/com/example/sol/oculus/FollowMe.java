@@ -1,6 +1,7 @@
 package com.example.sol.oculus;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,10 +10,14 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class FollowMe extends AppCompatActivity {
     ProgressBar progressBar;
     RelativeLayout relativeLayout;
     int time = 0;                           //시간
+    int num = -1;                            //운동 횟수
     static boolean flag = false;            //프로그레스바 플래그
     static boolean runflag = true;          //쓰레드 종료 플래그
 
@@ -24,9 +29,9 @@ public class FollowMe extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);               //화면 안꺼짐
 
-        runflag = true;
-
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseFM);
+
+        LoadData("FM");
 
         Intent intent = new Intent(this, ExplainFM.class);
         startActivity(intent);
@@ -43,9 +48,11 @@ public class FollowMe extends AppCompatActivity {
                         time++;
                         Log.d("FollowMe", "운동중");
 
-                        if (time > 100) {
+                        if (time > 60) {
                             Log.d("FollowMe", "운동완료");
                             time = 0;
+                            num++;
+                            SaveData("FM", num);
                             runflag = false;
                             finish();
                         }
@@ -78,5 +85,23 @@ public class FollowMe extends AppCompatActivity {
     public void startFMClicked(View view) {
         flag = true;
         relativeLayout.setVisibility(View.GONE);
+    }
+
+
+
+    public void SaveData(String Exercise, int num) {
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = exerciseData.edit();
+        editor.putInt(Exercise + today, num);
+        editor.commit();
+    }
+
+    public void LoadData(String Exercise){
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        num = exerciseData.getInt(Exercise + today, 0);
     }
 }

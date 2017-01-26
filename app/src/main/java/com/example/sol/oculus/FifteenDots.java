@@ -1,6 +1,7 @@
 package com.example.sol.oculus;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class FifteenDots extends AppCompatActivity {
     ProgressBar progressBar;
     RelativeLayout relativeLayout;
@@ -18,6 +22,7 @@ public class FifteenDots extends AppCompatActivity {
     MyTranslateAnimation animTransLeft;
     MyTranslateAnimation animTransRight;
 
+    int num = -1;                            //운동횟수
     int time = 0;                           //시간
     static boolean flag = false;            //프로그레스바 플래그
     boolean runflag = true;          //쓰레드 종료 플래그
@@ -31,6 +36,8 @@ public class FifteenDots extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);                   //화면 안꺼짐
 
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseFD);
+
+        LoadData("FD");
 
         Intent intent = new Intent(this, ExplainFD.class);
         startActivity(intent);
@@ -56,9 +63,11 @@ public class FifteenDots extends AppCompatActivity {
                         time++;
                         Log.d("FifteenDots", "운동중");
 
-                        if (time > 100) {
+                        if (time > 60) {
                             Log.d("FifteenDots", "운동완료");
                             time = 0;
+                            num++;
+                            SaveData("FD", num);
                             runflag = false;
                             finish();
                         }
@@ -97,5 +106,21 @@ public class FifteenDots extends AppCompatActivity {
 
         flag = false;
         relativeLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void SaveData(String Exercise, int num) {
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = exerciseData.edit();
+        editor.putInt(Exercise + today, num);
+        editor.commit();
+    }
+
+    public void LoadData(String Exercise){
+        Calendar calendar = new GregorianCalendar();
+        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
+        num = exerciseData.getInt(Exercise + today, 0);
     }
 }
