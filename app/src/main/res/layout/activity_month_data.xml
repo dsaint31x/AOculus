@@ -38,7 +38,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:id="@+id/selectData"
-            android:text="선택한 날짜에 한 운동 횟수가 들어갈 곳"
+            android:text="선택한 날짜의 운동횟수가 보여집니다."
             android:gravity="center_vertical"
             android:textSize="15dp"/>
         <TextView

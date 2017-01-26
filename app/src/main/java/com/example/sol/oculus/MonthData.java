@@ -40,9 +40,11 @@ public class MonthData extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 selectDayView.setText("선택한 날짜 : "+ year +" / "+(month+1)+" / "+dayOfMonth);
-                String FM = "FollowMe : "+LoadData("FM", year+""+(month)+1+""+dayOfMonth);
-                String FD = "FifteenDots : "+LoadData("FD", year+""+(month)+1+""+dayOfMonth);
-                String BN = "Brightness : "+LoadData("BN", year+""+(month)+1+""+dayOfMonth);
+
+                String selectDay = year + "" + month + "" + dayOfMonth;
+                String FM = "FollowMe : "+LoadData("FM", selectDay);
+                String FD = "FifteenDots : "+LoadData("FD", selectDay);
+                String BN = "Brightness : "+LoadData("BN", selectDay);
 
                 selecData.setText(FM +"\n"+ FD +"\n"+ BN);
             }
