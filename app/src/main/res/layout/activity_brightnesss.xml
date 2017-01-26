@@ -18,7 +18,7 @@
             android:text="이 운동을 통해 눈의 홍채를 단련할 수 있습니다.\n\n
         1. 화면을 눈 가까이에 두세요\n
         2. 화면을 누르면 일시정지합니다.\n\n
-        시작하시려면 화면을 터치해주세요."
+        화면이 어두워졌다 밝아지는 동작이 두번 반복됩니다."
             android:textColor="#000000"
             android:paddingLeft="50dp"
             android:onClick="pauseClicked"

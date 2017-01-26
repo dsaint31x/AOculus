@@ -124,19 +124,19 @@ public class Brightnesss extends AppCompatActivity {
 
             if(timeNum < 1000){
                 params.screenBrightness = 0.5f;
-            } else if(timeNum < 1500){
-                params.screenBrightness = 0.1f;
-            } else if(timeNum < 2650){
-                brightnessNum += 0.0003;
+            } else if(timeNum < 1300){
+                params.screenBrightness = 0.2f;
+            } else if(timeNum < 2350){
+                brightnessNum += 0.0006;
                 params.screenBrightness = brightnessNum;
-            } else if(timeNum < 3800){
-                brightnessNum -= 0.0003;
+            } else if(timeNum < 3500){
+                brightnessNum -= 0.0005;
                 params.screenBrightness = brightnessNum;
-            } else if(timeNum < 4950){
-                brightnessNum += 0.0003;
+            } else if(timeNum < 4650){
+                brightnessNum += 0.0006;
                 params.screenBrightness = brightnessNum;
             } else if(timeNum < 6000){
-                brightnessNum -= 0.0003;
+                brightnessNum -= 0.0005d;
                 params.screenBrightness = brightnessNum;
             }
 
