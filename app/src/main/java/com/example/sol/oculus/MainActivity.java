@@ -10,7 +10,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_data);
+        setContentView(R.layout.activity_main);
+
+
     }
 
     public void FMButtonClicked(View view) {
@@ -27,4 +29,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Brightnesss.class);
         startActivity(intent);
     }
+
+    public void EDButtonClicked(View view) {
+        Intent intent = new Intent(getApplicationContext(), ExerciseData.class);
+        startActivity(intent);
+    }
+
+
 }

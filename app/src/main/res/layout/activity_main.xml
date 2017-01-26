@@ -36,4 +36,13 @@
         android:layout_below="@+id/button_fifteen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ExerciseData"
+        android:id="@+id/button_exercisedata"
+        android:onClick="EDButtonClicked"
+        android:layout_below="@+id/button_brightness"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
 </RelativeLayout>

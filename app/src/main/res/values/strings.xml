@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Oculus</string>
+    <string name="title_activity_calendar_data">CalendarData</string>
 </resources>

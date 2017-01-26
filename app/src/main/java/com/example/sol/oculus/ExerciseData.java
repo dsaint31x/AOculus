@@ -1,14 +1,20 @@
 package com.example.sol.oculus;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
 
-public class ExerciseData extends AppCompatActivity {
+/**
+ * Created by Sol on 2017-01-26.
+ */
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_data);
+public class ExerciseData {
+
+    public void SaveData() {
+        SharedPreferences exerciseData = getPreferences(Context.MODE_PRIVATE);
+
 
     }
+
+
+
 }
