@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     public void EDButtonClicked(View view) {
         Intent intent = new Intent(getApplicationContext(), MonthData.class);
         startActivity(intent);
+
+        layoutClose("FM");
+        layoutClose("FD");
+        layoutClose("BN");
     }
 
     public void FMStartClicked(View view) {

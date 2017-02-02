@@ -5,6 +5,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:orientation="vertical"
     tools:context="com.example.sol.oculus.MainActivity"
     android:weightSum="1">
@@ -13,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Oculus"
-        android:textSize="40dp"
+        android:textSize="50dp"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:layout_marginTop="20dp"
@@ -26,7 +29,7 @@
         android:textSize="20dp"
         android:padding="15dp"
         android:textAllCaps="false"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/button_follow"
         android:onClick="FMButtonClicked" />
 
