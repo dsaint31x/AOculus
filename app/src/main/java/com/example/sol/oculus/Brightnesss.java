@@ -147,7 +147,7 @@ public class Brightnesss extends AppCompatActivity {
 
     public void SaveData(String Exercise, int num) {
         Calendar calendar = new GregorianCalendar();
-        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        String today = calendar.get(Calendar.YEAR) + "" + (calendar.get(Calendar.MONTH) + 1) + "" + calendar.get(Calendar.DAY_OF_MONTH);
         SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
         SharedPreferences.Editor editor = exerciseData.edit();
         editor.putInt(Exercise + today, num);
@@ -156,7 +156,7 @@ public class Brightnesss extends AppCompatActivity {
 
     public void LoadData(String Exercise){
         Calendar calendar = new GregorianCalendar();
-        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        String today = calendar.get(Calendar.YEAR) + "" + (calendar.get(Calendar.MONTH) + 1) + "" + calendar.get(Calendar.DAY_OF_MONTH);
         SharedPreferences exerciseData = getSharedPreferences("ExerciseData", MODE_PRIVATE);
         num = exerciseData.getInt(Exercise + today, 0);
     }

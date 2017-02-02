@@ -26,7 +26,7 @@ public class MonthData extends AppCompatActivity {
         todayData = (TextView) findViewById(R.id.todayData);
 
         Calendar calendar = new GregorianCalendar();
-        String today = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.DAY_OF_MONTH);
+        String today = calendar.get(Calendar.YEAR) + "" + (calendar.get(Calendar.MONTH) + 1) + "" + calendar.get(Calendar.DAY_OF_MONTH);
 
         String todayFM = "FollowMe : "+LoadData("FM", today);
         String todayFD = "FifteenDots : "+LoadData("FD", today);
@@ -39,9 +39,9 @@ public class MonthData extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                selectDayView.setText("선택한 날짜 : "+ year +" / "+(month+1)+" / "+dayOfMonth);
+                selectDayView.setText("선택한 날짜 : "+ year +" / "+(month + 1)+" / "+dayOfMonth);
 
-                String selectDay = year + "" + month + "" + dayOfMonth;
+                String selectDay = year + "" + (month + 1) + "" + dayOfMonth;
                 String FM = "FollowMe : "+LoadData("FM", selectDay);
                 String FD = "FifteenDots : "+LoadData("FD", selectDay);
                 String BN = "Brightness : "+LoadData("BN", selectDay);
