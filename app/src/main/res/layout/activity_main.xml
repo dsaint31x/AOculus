@@ -1,52 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sol.oculus.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.example.sol.oculus.MainActivity"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oculus"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Follow Me"
+        android:textSize="20dp"
+        android:padding="15dp"
         android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:id="@+id/button_follow"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
         android:onClick="FMButtonClicked" />
 
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/explainFM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="1000"
+        app:el_expanded="false"
+        app:el_parallax="0.5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="움직이는 점을 따라 눈을 움직임으로서 눈동자를 상하좌우로 스트레칭 해주는 운동으로 딱딱하게 굳은 눈 근육을 풀어줄 수 있습니다."
+                android:textSize="15dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="운동 시작하기"
+                android:onClick="FMStartClicked"/>
+        </LinearLayout>
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fifteen Dots"
+        android:textSize="20dp"
+        android:padding="15dp"
         android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:id="@+id/button_fifteen"
-        android:onClick="FDButtonClicked"
-        android:layout_below="@+id/button_follow"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
+        android:onClick="FDButtonClicked"/>
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/explainFD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="1000"
+        app:el_expanded="false"
+        app:el_parallax="0.5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="두개의 점을 각각 하나씩 눈동자로 따로 보는 운동으로 모양체를 단련시킬 수 있습니다.  모양체는 원근에 맞춰서 수정체의 두께를 바꾸는 작용을 하며, 가까운 물체와 멀리 있는 물체에 초점을 잘 맞출 수 있는 모양체로 만드는 것이 이 운동의 목표입니다."
+                android:textSize="15dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="운동 시작하기"
+                android:onClick="FDStartClicked"/>
+        </LinearLayout>
+    </net.cachapa.expandablelayout.ExpandableLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Brightness"
+        android:textSize="20dp"
+        android:padding="15dp"
         android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:id="@+id/button_brightness"
-        android:onClick="BNButtonClicked"
-        android:layout_below="@+id/button_fifteen"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
+        android:onClick="BNButtonClicked" />
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/explainBN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="1000"
+        app:el_expanded="false"
+        app:el_parallax="0.5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="홍채의 근육조직이 밝기에 따라 동공의 개폐 정도를 조절해, 눈에 들어오는 빛의 양을 조절합니다. 따라서 홍채를 단련시키려면 어두운 상태와 밝은 상태를 교대로 반복해주면 되므로 이 두 개의 움직임을 반복함으로써, 홍채의 근육 조직을 단련 시켜 유연하고 부드럽게 움직이게 만드는 것이 이 운동의 목표입니다."
+                android:textSize="15dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="운동 시작하기"
+                android:onClick="BNStartClicked"/>
+        </LinearLayout>
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Exercise Data"
+        android:textSize="20dp"
+        android:padding="15dp"
         android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:id="@+id/button_exercisedata"
-        android:onClick="EDButtonClicked"
-        android:layout_below="@+id/button_brightness"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
-</RelativeLayout>
+        android:onClick="EDButtonClicked"/>
+</LinearLayout>
