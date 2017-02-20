@@ -35,8 +35,6 @@ public class FifteenDots extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);                   //화면 안꺼짐
 
-        relativeLayout = (RelativeLayout) findViewById(R.id.pauseFD);
-
         LoadData("FD");
 
         Intent intent = new Intent(this, ExplainFD.class);
@@ -54,6 +52,30 @@ public class FifteenDots extends AppCompatActivity {
 
         mImgView_left.startAnimation(animTransLeft);
         mImgView_right.startAnimation(animTransRight);
+
+        relativeLayout = (RelativeLayout) findViewById(R.id.pauseFD);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animTransRight.resume();
+                animTransLeft.resume();
+
+                relativeLayout.setVisibility(View.GONE);
+                flag = true;
+            }
+        });
+
+        RelativeLayout FDView = (RelativeLayout) findViewById(R.id.FDView);
+        FDView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animTransLeft.pause();
+                animTransRight.pause();
+                Log.d("FifteenDots", "정지클릭");
+                flag = false;
+                relativeLayout.setVisibility(View.VISIBLE);
+            }
+        });
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -90,22 +112,6 @@ public class FifteenDots extends AppCompatActivity {
     public void onBackPressed() {
         runflag = false;
         super.onBackPressed();
-    }
-
-    public void startFDClicked(View view) {
-        animTransRight.resume();
-        animTransLeft.resume();
-
-        relativeLayout.setVisibility(View.GONE);
-        flag = true;
-    }
-
-    public void pauseFDClicked(View view) {
-        animTransLeft.pause();
-        animTransRight.pause();
-
-        flag = false;
-        relativeLayout.setVisibility(View.VISIBLE);
     }
 
     public void SaveData(String Exercise, int num) {

@@ -30,8 +30,7 @@
         android:padding="15dp"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:id="@+id/button_follow"
-        android:onClick="FMButtonClicked" />
+        android:id="@+id/button_follow"/>
 
     <net.cachapa.expandablelayout.ExpandableLayout
         android:id="@+id/explainFM"
@@ -56,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:id="@+id/FMstart"
                 android:textStyle="bold"
-                android:text="운동 시작하기"
-                android:onClick="FMStartClicked"/>
+                android:text="운동 시작하기"/>
         </LinearLayout>
 
     </net.cachapa.expandablelayout.ExpandableLayout>
@@ -71,8 +70,7 @@
         android:padding="15dp"
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
-        android:id="@+id/button_fifteen"
-        android:onClick="FDButtonClicked"/>
+        android:id="@+id/button_fifteen"/>
 
     <net.cachapa.expandablelayout.ExpandableLayout
         android:id="@+id/explainFD"
@@ -98,8 +96,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
-                android:text="운동 시작하기"
-                android:onClick="FDStartClicked"/>
+                android:id="@+id/FDstart"
+                android:text="운동 시작하기"/>
         </LinearLayout>
     </net.cachapa.expandablelayout.ExpandableLayout>
 
@@ -111,8 +109,7 @@
         android:padding="15dp"
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
-        android:id="@+id/button_brightness"
-        android:onClick="BNButtonClicked" />
+        android:id="@+id/button_brightness" />
     <net.cachapa.expandablelayout.ExpandableLayout
         android:id="@+id/explainBN"
         android:layout_width="match_parent"
@@ -137,8 +134,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
-                android:text="운동 시작하기"
-                android:onClick="BNStartClicked"/>
+                android:id="@+id/BNstart"
+                android:text="운동 시작하기"/>
         </LinearLayout>
     </net.cachapa.expandablelayout.ExpandableLayout>
 
@@ -150,6 +147,5 @@
         android:padding="15dp"
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
-        android:id="@+id/button_exercisedata"
-        android:onClick="EDButtonClicked"/>
+        android:id="@+id/button_exercisedata"/>
 </LinearLayout>

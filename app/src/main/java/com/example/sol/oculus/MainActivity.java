@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -23,72 +24,102 @@ public class MainActivity extends AppCompatActivity {
         FMlayout = (ExpandableLayout) findViewById(R.id.explainFM);
         FDlayout = (ExpandableLayout) findViewById(R.id.explainFD);
         BNlayout = (ExpandableLayout) findViewById(R.id.explainBN);
-    }
 
-    public void FMButtonClicked(View view) {
-        if(FMflag == false) {
-            FMlayout.expand();
-            FMflag = true;
-            layoutClose("FD");
-            layoutClose("BN");
-        }
-        else {
-            layoutClose("FM");
-        }
-    }
+        Button FMbutton = (Button) findViewById(R.id.button_follow);
+        Button FDbutton = (Button) findViewById(R.id.button_fifteen);
+        Button BNbutton = (Button) findViewById(R.id.button_brightness);
+        Button EDbutton = (Button) findViewById(R.id.button_exercisedata);
 
-    public void FDButtonClicked(View view) {
-        if(FDflag == false) {
-            FDlayout.expand();
-            FDflag = true;
-            layoutClose("FM");
-            layoutClose("BN");
-        }
-        else {
-            layoutClose("FD");
-        }
-    }
+        Button FMstart = (Button) findViewById(R.id.FMstart);
+        Button FDstart = (Button) findViewById(R.id.FDstart);
+        Button BNstart = (Button) findViewById(R.id.BNstart);
 
-    public void BNButtonClicked(View view) {
-        if(BNflag == false) {
-            BNlayout.expand();
-            BNflag = true;
-            layoutClose("FM");
-            layoutClose("FD");
-        }
-        else {
-            layoutClose("BN");
-        }
-    }
+        FMbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FMflag == false) {
+                    FMlayout.expand();
+                    FMflag = true;
+                    layoutClose("FD");
+                    layoutClose("BN");
+                }
+                else {
+                    layoutClose("FM");
+                }
+            }
+        });
 
-    public void EDButtonClicked(View view) {
-        Intent intent = new Intent(getApplicationContext(), MonthData.class);
-        startActivity(intent);
+        FDbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FDflag == false) {
+                    FDlayout.expand();
+                    FDflag = true;
+                    layoutClose("FM");
+                    layoutClose("BN");
+                }
+                else {
+                    layoutClose("FD");
+                }
+            }
+        });
 
-        layoutClose("FM");
-        layoutClose("FD");
-        layoutClose("BN");
-    }
+        BNbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(BNflag == false) {
+                    BNlayout.expand();
+                    BNflag = true;
+                    layoutClose("FM");
+                    layoutClose("FD");
+                }
+                else {
+                    layoutClose("BN");
+                }
+            }
+        });
 
-    public void FMStartClicked(View view) {
-        Intent intent = new Intent(getApplicationContext(), FollowMe.class);
-        startActivity(intent);
+        EDbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MonthData.class);
+                startActivity(intent);
 
-        layoutClose("FM");
-    }
+                layoutClose("FM");
+                layoutClose("FD");
+                layoutClose("BN");
+            }
+        });
 
-    public void FDStartClicked(View view) {
-        Intent intent = new Intent(getApplicationContext(), FifteenDots.class);
-        startActivity(intent);
+        FMstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FollowMe.class);
+                startActivity(intent);
 
-        layoutClose("FD");
-    }
+                layoutClose("FM");
+            }
+        });
 
-    public void BNStartClicked(View view) {
-        Intent intent = new Intent(getApplicationContext(), Brightnesss.class);
-        startActivity(intent);
+        FDstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FifteenDots.class);
+                startActivity(intent);
 
-        layoutClose("BN");
+                layoutClose("FD");
+            }
+        });
+
+        BNstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Brightnesss.class);
+                startActivity(intent);
+
+                layoutClose("BN");
+            }
+        });
     }
 
     void layoutClose(String exercise) {

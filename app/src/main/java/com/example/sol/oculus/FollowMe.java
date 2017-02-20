@@ -30,7 +30,21 @@ public class FollowMe extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);               //화면 안꺼짐
 
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseFM);
-
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flag = true;
+                relativeLayout.setVisibility(View.GONE);
+            }
+        });
+        View view = (View) findViewById(R.id.view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flag = false;
+                relativeLayout.setVisibility(View.VISIBLE);
+            }
+        });
         LoadData("FM");
 
         Intent intent = new Intent(this, ExplainFM.class);
@@ -76,18 +90,6 @@ public class FollowMe extends AppCompatActivity {
         runflag = false;
         super.onBackPressed();
     }
-
-    public void pauseFMClicked(View view) {
-        flag = false;
-        relativeLayout.setVisibility(View.VISIBLE);
-    }
-
-    public void startFMClicked(View view) {
-        flag = true;
-        relativeLayout.setVisibility(View.GONE);
-    }
-
-
 
     public void SaveData(String Exercise, int num) {
         Calendar calendar = new GregorianCalendar();

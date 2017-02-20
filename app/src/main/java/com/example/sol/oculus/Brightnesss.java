@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -36,12 +37,28 @@ public class Brightnesss extends AppCompatActivity {
 
         LoadData("BN");
 
+        TextView BNView = (TextView) findViewById(R.id.BNView);
+        BNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flag = false;
+                relativeLayout.setVisibility(View.VISIBLE);
+            }
+        });
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         progressBar.setIndeterminate(false);
         progressBar.setMax(100);
         params = getWindow().getAttributes();
         handler = new ProgressHandler();
+
         relativeLayout = (RelativeLayout) findViewById(R.id.pauseBN);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativeLayout.setVisibility(View.GONE);
+                flag = true;
+            }
+        });
 
 
         Thread t = new Thread(new Runnable() {
@@ -106,16 +123,6 @@ public class Brightnesss extends AppCompatActivity {
     public void onBackPressed() {
         runflag = false;
         super.onBackPressed();
-    }
-
-    public void pauseClicked(View view) {
-        flag = false;
-        relativeLayout.setVisibility(View.VISIBLE);
-    }
-
-    public void startClicked(View view) {
-        relativeLayout.setVisibility(View.GONE);
-        flag = true;
     }
 
     public class ProgressHandler extends Handler{

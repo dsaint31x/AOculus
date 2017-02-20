@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
-            android:onClick="pauseFDClicked">
+            android:id="@+id/FDView">
             <ImageView
                 android:id="@+id/left_icon"
                 android:layout_width="60dp"
@@ -52,7 +52,6 @@
         android:layout_height="match_parent"
         android:id="@+id/pauseFD"
         android:background="#44000000"
-        android:visibility="gone"
-        android:onClick="startFDClicked">
+        android:visibility="gone">
     </RelativeLayout>
 </FrameLayout>

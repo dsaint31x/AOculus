@@ -15,10 +15,9 @@
         2. 나타나는 아이콘을 눈으로만 쫓아가 주세요\n
         3. 화면을 누르면 일시정지합니다.\n\n
         시작하시려면 화면을 터치해주세요."
-        android:id="@+id/textView"
+        android:id="@+id/ExplainFMText"
         android:background="#ffffff"
         android:textColor="#000000"
         android:paddingLeft="50dp"
-        android:onClick="explainFMClicked"
         android:gravity="fill_horizontal|center_vertical" />
 </RelativeLayout>

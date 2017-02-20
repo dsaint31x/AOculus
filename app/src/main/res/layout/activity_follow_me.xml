@@ -16,7 +16,6 @@
             class="com.example.sol.oculus.Exercise1"
             android:id="@+id/view"
             android:layout_weight="50"
-            android:onClick="pauseFMClicked"
             android:background="#cef76e"/>
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -31,7 +30,6 @@
         android:layout_height="match_parent"
         android:id="@+id/pauseFM"
         android:background="#44000000"
-        android:visibility="gone"
-        android:onClick="startFMClicked">
+        android:visibility="gone">
     </RelativeLayout>
 </FrameLayout>
