@@ -30,7 +30,8 @@
         <activity
             android:name=".Brightnesss"
             android:screenOrientation="landscape" />
-        <activity android:name=".MonthData"></activity>
+        <activity android:name=".MonthData" />
+        <activity android:name=".OpenSource"></activity>
     </application>
 
 </manifest>

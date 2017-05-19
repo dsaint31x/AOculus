@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Button FDbutton = (Button) findViewById(R.id.button_fifteen);
         Button BNbutton = (Button) findViewById(R.id.button_brightness);
         Button EDbutton = (Button) findViewById(R.id.button_exercisedata);
+        Button OSbutton = (Button) findViewById(R.id.button_sourcebutton);
 
         Button FMstart = (Button) findViewById(R.id.FMstart);
         Button FDstart = (Button) findViewById(R.id.FDstart);
@@ -83,6 +84,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MonthData.class);
+                startActivity(intent);
+
+                layoutClose("FM");
+                layoutClose("FD");
+                layoutClose("BN");
+            }
+        });
+
+        OSbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OpenSource.class);
                 startActivity(intent);
 
                 layoutClose("FM");

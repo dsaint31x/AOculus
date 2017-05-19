@@ -148,4 +148,10 @@
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
         android:id="@+id/button_exercisedata"/>
+
+    <Button
+        android:id="@+id/button_sourcebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="오픈소스 라이선스" />
 </LinearLayout>
